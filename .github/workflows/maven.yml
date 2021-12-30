@@ -27,5 +27,6 @@ jobs:
           local: target/tonytest.jar
           remote: /opt/springboot/tonytest.jar
           host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
