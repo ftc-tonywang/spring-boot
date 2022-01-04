@@ -16,7 +16,8 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: | # 命令中的 & 表示在后台运行进程
-            cd /opt/springboot/ && java -jar tonytest.jar &
+            cd /opt/springboot 
+            java -jar tonytest.jar
           host: ${{ secrets.HOST }}
           user: ${{ secrets.SSH_USER }}
           pass: ${{ secrets.SSH_PASSWORD }}
