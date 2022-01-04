@@ -12,21 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     name: Running Java ${{ matrix.java }} compile
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
+      - name: 在服务器上执行 java -jar，请确保服务器安装了 JDK
+        uses: fifsky/ssh-action@master
         with:
-          java-version: 11
-          distribution: 'adopt'
-          cache: maven
-      - name: Build Code
-        run: mvn -B package --file pom.xml
-      - name: Deploy Jar
-        uses: garygrossgarten/github-action-scp@release
-        with:
-          local: target/tonytest.jar
-          remote: /opt/springboot/tonytest.jar
+          command: | # 命令中的 & 表示在后台运行进程
+            cd /opt/springboot/ && java -jar tonytest.jar &
           host: ${{ secrets.HOST }}
+          user: ${{ secrets.SSH_USER }}
+          pass: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.PORT }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          args: "-tt"
