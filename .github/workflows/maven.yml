@@ -15,7 +15,7 @@ jobs:
       - name: 在服务器上执行 java -jar，请确保服务器安装了 JDK
         uses: fifsky/ssh-action@master
         with:
-          command: cd /opt/springboot && java -jar tonytest.jar
+          command: cd /opt/springboot
           host: ${{ secrets.HOST }}
           user: ${{ secrets.SSH_USER }}
           pass: ${{ secrets.SSH_PASSWORD }}
