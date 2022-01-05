@@ -20,3 +20,4 @@ jobs:
           user: ${{ secrets.SSH_USER }}
           pass: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.PORT }}
+          args: "-tt -vvv"
