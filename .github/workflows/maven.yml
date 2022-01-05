@@ -22,6 +22,6 @@ jobs:
           command: cd /opt/springboot
           host: ${{ secrets.HOST }}
           user: ${{ secrets.SSH_USER }}
-          pass: "${{ secrets.SSH_PASSWORD }}"
+          pass: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.PORT }}
           args: "-tt -vvv"
