@@ -16,6 +16,8 @@ jobs:
         working-directory: scripts
     name: Running Java ${{ matrix.java }} compile
     steps:
+      - name: test
+        uses: actions/checkout@v2
       - name: 在服务器上执行 java -jar，请确保服务器安装了 JDK
         uses: fifsky/ssh-action@master
         with:
